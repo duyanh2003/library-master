@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title sec:authentication="principal.username"></title>
+    <link rel="stylesheet" href="/css/user-details.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div th:replace="~{fragments/topnav :: navbar}"></div>
+
+    <div class="container content">
+        <div class="update-password">
+            <h3>Change password</h3>
+            <hr>
+            <div th:if="${param.success}" class="alert alert-success info">
+                Password changed
+            </div>
+            <form action="#" th:action="@{/account/updatePassword}" th:object="${updatePassword}" method="post">
+                <label for="current-pwd">Old password</label>
+                <input type="password" th:field="*{currentPassword}" id="current-pwd" class="form-control"><br>
+                <div th:if="${#fields.hasErrors('currentPassword')}" class="alert alert-danger info">
+                    <span th:errors="*{currentPassword}"></span>
+                </div>
+                <label for="new-pwd">New password</label>
+                <input type="password" th:field="*{newPassword}" id="new-pwd" class="form-control"><br>
+                <div th:if="${#fields.hasErrors('newPassword')}" class="alert alert-danger info">
+                    <span th:errors="*{newPassword}"></span>
+                </div>
+                <label for="confirm-new-pwd">Confirm new password</label>
+                <input type="password" th:field="*{confirmNewPassword}" id="confirm-new-pwd" class="form-control"><br>
+                <div th:if="${#fields.hasErrors('confirmNewPassword')}" class="alert alert-danger info">
+                    <span th:errors="*{confirmNewPassword}"></span>
+                </div>
+                <button type="submit" class="btn btn-success">Update password</button>
+            </form>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

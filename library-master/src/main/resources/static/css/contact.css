@@ -1,0 +1,53 @@
+.contact {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.name {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    margin-top: 70px;
+    color: #39ac31;
+    font-weight: 600;
+    font-family: "Arial", sans-serif;
+}
+
+.contact-body {
+    padding: 0 60px 0 80px;
+}
+
+.finish {
+    text-align: center;
+    font-weight: bolder;
+    color: #39ac31;
+}
+
+.contacts {
+    display: flex;
+    margin: 35px 0 40px 0;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.border {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    line-height: 40px;
+    padding: 30px 30px 20px 30px;
+    box-shadow: 2px 2px 5px #ececec;
+}
+
+.color {
+    color: #39ac31;
+    font-weight: bolder;
+}
+
+.my-icon {
+    font-size: 35px;
+    color: #39ac31;
+}
