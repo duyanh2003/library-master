@@ -4,32 +4,29 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="04" author="vusalaxndzde">
+    <changeSet id="04" author="duyanh">
         <insert tableName="users">
-            <column name="id" autoIncrement="true" />
             <column name="email" value="admin@gmail.com" />
             <column name="name" value="admin" />
             <column name="surname" value="admin" />
-            <column name="password" value="$2a$10$16VQLHj1knw1fIlKpSGSgOtZDwgW/rVJC77oOAzs8ZUmar5I2DRbG" />
+            <column name="password" value="$2a$10$cHeSk40VWF6nuSuniYelOeVk7tSH9rgMhLDP5X.tgh/jD7oLCBjMS" />
         </insert>
     </changeSet>
-    
-    <changeSet id="05" author="vusalaxndzde">
+
+    <changeSet id="05" author="duyanh">
         <insert tableName="role">
-            <column name="id" autoIncrement="true" />
             <column name="role_name" value="ADMIN" />
         </insert>
         <insert tableName="role">
-            <column name="id" autoIncrement="true" />
             <column name="role_name" value="USER" />
         </insert>
     </changeSet>
-    
-    <changeSet id="06" author="vusalaxndzde">
+
+    <changeSet id="06" author="duyanh">
         <insert tableName="user_role">
             <column name="user_id" valueNumeric="1" />
             <column name="role_id" valueNumeric="2" />
         </insert>
     </changeSet>
-    
+
 </databaseChangeLog>

@@ -9,27 +9,13 @@ services:
       - "8080:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=dev
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://library-db:5432/library-db
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_DATASOURCE_URL=jdbc:mysql://localhost:9999/library
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=01658582113
       - SPRING_JPA_HIBERNATE_DDL-AUTO=update
-      - SPRING_DATASOURCE_DRIVER-CLASS-NAME=org.postgresql.Driver
+      - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql
     depends_on:
       - library-db
-    networks:
-      - library-network
-
-  library-db:
-    image: postgres:latest
-    container_name: library-db
-    environment:
-      POSTGRES_DB: library-db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    ports:
-      - "5432:5432"
-    volumes:
-      - library-db:/var/lib/postgresql/data
     networks:
       - library-network
 
