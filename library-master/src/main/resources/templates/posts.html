@@ -1,32 +1,62 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Posts</title>
-    <link rel="stylesheet" th:href="@{/css/navbar.css}">
-    <link rel="stylesheet" th:href="@{/css/footer.css}">
-    <link rel="stylesheet" th:href="@{/css/posts.css}">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div th:replace="~{fragments/topnav :: navbar}"></div>
+<div th:replace="~{fragments/topnav :: navbar}"></div>
 
-    <div class="container">
-        <h1>Posts</h1>
-        <button onclick="window.location.href='/posts-create'">Create Post</button>
-        <h2>All Posts</h2>
-        <div th:each="post : ${posts}">
-            <h3 th:text="${post.title}">Post Title</h3>
-            <p th:text="${post.content}">Post Content</p>
-            <a th:href="@{/posts/{id}(id=${post.id})}">Read more</a>
-        </div>
-        <h2>Top 5 Most Liked Posts</h2>
-        <div th:each="post : ${topPosts}">
-            <h3 th:text="${post.title}">Post Title</h3>
-            <p th:text="${post.content}">Post Content</p>
-            <a th:href="@{/posts/{id}(id=${post.id})}">Read more</a>
+<div class="container mycontent">
+    <div class="body-head">
+        <h4>Posts</h4>
+        <hr>
+    </div>
+
+    <div class="size-posts">
+        <span th:text="${posts.size()}"></span> <span>posts</span>
+    </div>
+    <div class="body">
+        <div class="post-border" th:each="post : ${posts}">
+            <a th:href="@{/posts/{id}(id=${post.id})}">
+                <div class="title">
+                    <p th:text="${post.title}"></p>
+                </div>
+            </a>
+            <div class="surname">
+                <p th:text="${post.surname}"></p>
+            </div>
+            <div class="likes">
+                <p>Likes: <span th:text="${post.likes.size()}"></span></p>
+            </div>
+            <form action="#" th:action="@{/posts/{id}/delete(id=${post.id})}" method="post">
+                <button type="submit" class="btn btn-danger delete-btn">Delete</button>
+            </form>
         </div>
     </div>
 
-    <div th:replace="~{fragments/footer :: footer}"></div>
+    <a href="/posts/create" class="btn btn-primary add-btn">Create Post</a>
+
+    <div class="body-head">
+        <h4>Top 5 Most Liked Posts</h4>
+        <hr>
+    </div>
+
+    <div class="body">
+        <div class="post-border" th:each="post : ${topPosts}">
+            <p th:text="${post.title}"></p>
+            <p>Likes: <span th:text="${post.likes.size()}"></span></p>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 package com.example.library.entity;
 
 import jakarta.persistence.*;
@@ -22,13 +23,17 @@ public class Post {
 
     private String content;
 
-    private String username;
+    private String surname;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> comments;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Like> likes;
+
+    public int getLikesCount() {
+        return likes.size();
+    }
 
     public int getId() {
         return id;
@@ -46,20 +51,20 @@ public class Post {
         this.title = title;
     }
 
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
     public String getContent() {
         return content;
     }
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public List<Comment> getComments() {

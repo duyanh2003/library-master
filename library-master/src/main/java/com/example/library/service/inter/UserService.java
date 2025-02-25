@@ -21,4 +21,6 @@ public interface UserService {
 
     User convertUserDTOToUser(UserDTO userDTO);
 
+    User findUserBySurname(String surname);
+
 }

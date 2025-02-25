@@ -1,3 +1,4 @@
+
 package com.example.library.entity;
 
 import jakarta.persistence.*;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "like")
+@Table(name = "`like`")
 public class Like {
 
     @Id
@@ -19,6 +20,10 @@ public class Like {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", referencedColumnName = "id")
     private Post post;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
     public int getId() {
         return id;
@@ -34,5 +39,9 @@ public class Like {
 
     public void setPost(Post post) {
         this.post = post;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

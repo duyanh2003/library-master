@@ -1,3 +1,4 @@
+
 package com.example.library.service;
 
 import com.example.library.entity.Like;
@@ -11,7 +12,7 @@ public class LikeService {
     @Autowired
     private LikeRepository likeRepository;
 
-    public Like saveLike(Like like) {
-        return likeRepository.save(like);
+    public void saveLike(Like like) {
+        likeRepository.save(like);
     }
 }

@@ -1,3 +1,4 @@
+
 package com.example.library.service;
 
 import com.example.library.entity.Post;
@@ -25,9 +26,11 @@ public class PostService {
         return postRepository.findById(postId).orElse(null);
     }
 
-    public List<Post> getAllPosts() { return postRepository.findAll();
+    public List<Post> getAllPosts() {
+        return postRepository.findAll();
     }
 
-    public void deletePost(int id) { postRepository.deleteById(id);
+    public void deletePost(int id) {
+        postRepository.deleteById(id);
     }
 }

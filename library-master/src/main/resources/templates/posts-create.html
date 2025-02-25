@@ -1,24 +1,43 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Create Post</title>
-    <link rel="stylesheet" th:href="@{/css/navbar.css}">
-    <link rel="stylesheet" th:href="@{/css/footer.css}">
-    <link rel="stylesheet" th:href="@{/css/posts.css}">
+    <link rel="stylesheet" href="/css/book-form.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div th:replace="~{fragments/topnav :: navbar}"></div>
+<div th:replace="~{fragments/topnav :: navbar}"></div>
 
+<div style="padding: 0 500px; margin: 50px 0">
     <div class="container">
-        <h1>Create Post</h1>
-        <form th:action="@{/posts}" method="post">
-            <input type="text" name="title" placeholder="Title" required>
-            <textarea name="content" placeholder="Content" required></textarea>
-            <button type="submit">Create Post</button>
+        <h2 class="title">Create Post</h2>
+        <form action="#" th:action="@{/posts}" th:object="${postDto}" method="post">
+            <input type="hidden" th:field="*{id}">
+            <div class="row mb-4 col-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="form6Example1">Title</label>
+                        <input type="text" th:field="*{title}" id="form6Example1" name="title" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-outline mb-4 col">
+                <label class="form-label" for="form6Example7">Content</label>
+                <textarea class="form-control" th:field="*{content}" id="form6Example7" name="content" rows="4"></textarea>
+            </div>
+
+            <button type="submit" style="margin-left: 14px" class="btn btn-primary btn-block mb-4 col-2">Submit</button>
         </form>
     </div>
+</div>
 
-    <div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>

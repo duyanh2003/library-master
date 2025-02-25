@@ -91,6 +91,11 @@ public class UserServiceImpl implements UserService {
         return modelMapper.map(userDTO, User.class);
     }
 
+    @Override
+    public User findUserBySurname(String surname) {
+        return userRepository.findUserBySurname(surname);
+    }
+
     public Role checkRoleExists(String roleName) {
         Role role = new Role();
         role.setRoleName(roleName);
